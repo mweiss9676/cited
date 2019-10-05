@@ -20,4 +20,8 @@ Cited will allow users to:
          * if possible it would be great to use a machine learning api to summarize articles
      * Users can add reminder notifications to alert them after a certain amount of time has passed
          * this will allow them to set themselves reminders to update their comments when major events occur such as political trials or the like
+         * it would be great to automate reminders when major news occurs involving a users tags (probably more of a phase 2 task)
+     * These items would become Citations which are individual collections of comment citation pairs
+         * cited would allow a user to create new comments by appending these citations to one another, thus generating new "comments" 
+         * citations would have the domain of the links listed in their footer in order to provide an at-a-glance view of the scholarly credentials of each citation. 
          
