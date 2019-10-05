@@ -1,6 +1,6 @@
 # cited
 
-### what is it? 
+### what? 
 
 Cited is an appliation that allows independent commentary "journalists" to categorize, tag and curate their references.
 Users can then take these references and build collections of comments with cited references. 
