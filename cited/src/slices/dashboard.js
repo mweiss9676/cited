@@ -1,6 +1,6 @@
 import { createSlice, createSelector } from 'redux-starter-kit';
 
-const todosSlice = createSlice({
+const todoSlice = createSlice({
   slice: 'todos',
   initialState: {
       error: null,
@@ -16,6 +16,14 @@ const todosSlice = createSlice({
   }
 });
 
-export const { setIsLoaded } = todosSlice.actions;
+export const { setIsLoaded } = todoSlice.actions;
+const { setError } = todoSlice.actions;
 
-export default todosSlice.reducer;
+const todosSelector = state => state.todos;
+
+export const isLoadedSelector = createSelector(
+  [todosSelector],
+  items => (items !== null ? items.isLoaded : null)
+)
+
+export { todoSlice };

@@ -1,25 +1,16 @@
-import { configureStore, getDefaultMiddleware } from 'redux-starter-kit'
-import preloadedState from './preloadedState';
-import { loadState, saveState } from './localStorage'
-import reducer from './todosSlice';
-import { throttle } from 'lodash';
+import { configureStore } from 'redux-starter-kit'
+import thunk from 'redux-thunk';
+import { todoSlice } from './slices/dashboard';
+const middleware = [thunk];
 
-const persistedState = loadState();
+const reducers = {
+    todo: todoSlice.reducer,
+}
 
 const store = configureStore({
-    reducer: {
-        todos: reducer,
-    },
-    middleware: [...getDefaultMiddleware(), logger],
-    devTools: process.env.NODE_ENV !== 'production',
-    preloadedState: (persistedState || preloadedState),
-    enhancers: [reduxBatch]
-})
-
-store.subscribe(throttle(() => {
-    saveState({
-        todos: store.getState().todos
-    });
-}, 1000));
+    reducer: reducers,
+    middleware,
+    devTools: process.env.NODE_ENV !== 'production'
+});
 
 export default store;
