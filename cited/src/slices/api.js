@@ -4,7 +4,7 @@ const apiSlice = createSlice({
   slice: "api",
   initialState: {
     error: null,
-    isLoading: true
+    isLoading: false
   },
   reducers: {
     setError(state, action) {

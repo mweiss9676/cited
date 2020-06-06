@@ -1,11 +1,12 @@
 import React, { useEffect, memo } from "react";
-import { Card, Input, Form } from "antd";
+import { Card, Input, Form, Select, Button } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 
 import { citationSelector, fetchCitation } from "../../slices/citation";
-import { layout } from "../../configuration/index";
+import { layout, tailLayout } from "../../configuration/index";
 
 const { TextArea } = Input;
+const { Option } = Select;
 
 const Create = () => {
   const citation = useSelector(citationSelector);
@@ -22,14 +23,29 @@ const Create = () => {
     console.log(values);
   };
 
-  const onFinishFail = values => {
+  const onFinishFailed = values => {
     console.log(values);
   };
   return (
     <>
       <Card title="New Citation">
         {citation != null && (
-          <Form {...layout}>
+          <Form {...layout} onFinish={onFinish} onFinishFailed={onFinishFailed}>
+            <Form.Item
+              label="Category"
+              name="category"
+              rules={[
+                {
+                  required: true,
+                  message: "A category is required"
+                }
+              ]}
+            >
+              <Select placeholder="Select a Category">
+                <Option value="test-1">Test 1</Option>
+                <Option value="test-2">Test 2</Option>
+              </Select>
+            </Form.Item>
             <Form.Item
               label="Citation"
               name="citation"
@@ -40,7 +56,20 @@ const Create = () => {
                 }
               ]}
             >
-              <TextArea defaultValue={citation.body} />
+              <TextArea
+                defaultValue={citation.body}
+                rows={5}
+                placeholder="Paste your citation here"
+              />
+            </Form.Item>
+            <Form.Item label="URL" name="url">
+              <Input
+                defaultValue={citation.url}
+                placeholder="Paste the URL to your citation here"
+              />
+            </Form.Item>
+            <Form.Item {...tailLayout}>
+              <Button type="submit">Save</Button>
             </Form.Item>
           </Form>
         )}

@@ -8,7 +8,7 @@ export const layout = {
 };
 export const tailLayout = {
   wrapperCol: {
-    offset: 8,
+    offset: 4,
     span: 16
   }
 };

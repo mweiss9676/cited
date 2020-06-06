@@ -7,21 +7,19 @@ import ErrorBoundary from "./ErrorBoundary";
 import ApiError from "./ApiError";
 
 const Layout = lazy(() => import("./Layout"));
-const Thing = lazy(() => import("./components/dashboard/index"));
+const Dashboard = lazy(() => import("./components/dashboard/index"));
 const Create = lazy(() => import("./components/citation/create"));
 
 const baseUrl = document.getElementsByTagName("base")[0].getAttribute("href");
 
 export const Paths = {
-  Test: {
-    Index: "/test"
+  Dashboard: {
+    Index: "/"
   },
   Citation: {
     Create: "/citation/new"
   }
 };
-
-console.log("I am rerendering");
 
 const App = () => {
   return (
@@ -41,8 +39,8 @@ const App = () => {
                   <Route path={Paths.Citation.Create}>
                     <Create />
                   </Route>
-                  <Route path={Paths.Test.Index}>
-                    <Thing />
+                  <Route path={Paths.Dashboard.Index}>
+                    <Dashboard />
                   </Route>
                 </Switch>
               </Layout>

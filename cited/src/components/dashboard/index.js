@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, memo } from "react";
 // import { useDispatch, useSelector } from "react-redux";
 // import { setIsLoaded, isLoadedSelector } from '../../slices/dashboard';
 
-const Thing = () => {
+const Dashboard = () => {
   // useEffect(() => {
   //     setIsLoaded(true)
   // }, [])
   return (
     <>
-      <div>byeee</div>
+      <div>home page</div>
     </>
   );
 };
 
-export default Thing;
+export default memo(Dashboard);

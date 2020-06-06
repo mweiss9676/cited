@@ -4,13 +4,16 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { Paths } from "./App";
 import { Layout, Menu, Breadcrumb, Spin } from "antd";
-import { UserOutlined } from "@ant-design/icons";
+import { UserOutlined, HighlightOutlined } from "@ant-design/icons";
 import { isLoadingSelector } from "./slices/api";
 
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
 
 const keys = {
+  DASHBOARD: {
+    INDEX: "dashboard"
+  },
   CITATIONS: {
     CREATE: "create-citation"
   }
@@ -33,7 +36,10 @@ const _Layout = ({ children }) => {
           defaultSelectedKeys={[keys.CITATIONS.CREATE]}
           mode="inline"
         >
-          <SubMenu key="sub1" icon={<UserOutlined />} title="Citations">
+          <Menu.Item key={keys.DASHBOARD.INDEX}>
+            <Link to={Paths.Dashboard.Index}>Cited</Link>
+          </Menu.Item>
+          <SubMenu key="sub1" icon={<HighlightOutlined />} title="Citations">
             <Menu.Item key={keys.CITATIONS.CREATE}>
               <Link to={Paths.Citation.Create}>Create</Link>
             </Menu.Item>
@@ -44,10 +50,6 @@ const _Layout = ({ children }) => {
         <Header className="site-layout-background" style={{ padding: 0 }} />
         <Spin spinning={isLoading}>
           <Content style={{ margin: "0 16px" }}>
-            <Breadcrumb style={{ margin: "16px 0" }}>
-              <Breadcrumb.Item>User</Breadcrumb.Item>
-              <Breadcrumb.Item>Bill</Breadcrumb.Item>
-            </Breadcrumb>
             <div
               className="site-layout-background"
               style={{ padding: 24, minHeight: 360 }}
