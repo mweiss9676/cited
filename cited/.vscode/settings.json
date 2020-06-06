@@ -1,0 +1,18 @@
+{
+  "editor.lineHeight": 25,
+  "editor.letterSpacing": 1,
+  "files.trimTrailingWhitespace": true,
+  "editor.fontFamily": "Fira Code",
+  "editor.fontLigatures": true,
+  "editor.fontWeight": "400",
+  "editor.cursorStyle": "line-thin",
+  "editor.cursorWidth": 1,
+  "editor.renderWhitespace": "all",
+  "workbench.colorTheme": "Night Owl",
+  "vscode_custom_css.imports": ["file:///C:/Users/Michael/customvscode.css"],
+  "vscode_custom_css.policy": true,
+  "editor.formatOnSave": true,
+  "workbench.tree.indent": 20,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "sync.gist": "2f3df7e9b988d768c1f42a5bf673fd86"
+}
