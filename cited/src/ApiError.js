@@ -1,9 +1,10 @@
 import "antd/dist/antd.css";
-import React, { memo, useEffect } from "react";
+import { memo, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { errorSelector } from "./slices/api";
 import { notification } from "antd";
 
+// component tested to not rerender children on error
 const ApiError = ({ children }) => {
   const error = useSelector(errorSelector);
 

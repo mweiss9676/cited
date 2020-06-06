@@ -5,20 +5,16 @@ const citationSlice = createSlice({
   slice: "citation",
   initialState: {
     error: null,
-    isLoading: true,
     citation: null
   },
   reducers: {
     setError(state, action) {
       state.error = action.payload;
-    },
-    setIsLoading(state, action) {
-      state.isLoading = action.payload;
     }
   }
 });
 
-const { setError, setIsLoading } = citationSlice.actions;
+const { setError } = citationSlice.actions;
 
 export const fetchCitation = async (id = 0) => {
   try {
@@ -28,10 +24,6 @@ export const fetchCitation = async (id = 0) => {
 };
 
 const stateSelector = state => state.citation;
-
-export const isLoadingSelector = createSelector([stateSelector], state =>
-  state !== null ? state.isLoading : true
-);
 
 export const citationSelector = createSelector([stateSelector], state =>
   state !== null ? state.citation || {} : null

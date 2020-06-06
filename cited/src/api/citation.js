@@ -5,5 +5,5 @@ export const getCitation = (id = 0) => {
 };
 
 export const getTest = () => {
-  return apiGet("https://jsonplaceholder.typicode.asdcom/todos/1");
+  return apiGet("https://jsonplaceholder.typicode.com/todos", 1);
 };

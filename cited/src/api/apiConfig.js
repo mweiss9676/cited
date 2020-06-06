@@ -4,7 +4,7 @@ import { setIsLoading, setError } from "../slices/api";
 export const apiGet = (url, ...rest) => {
   store.dispatch(setIsLoading(true));
 
-  return fetch(url, {
+  return fetch(`${url}/${rest}`, {
     method: "GET"
   })
     .then(response => response.json())
