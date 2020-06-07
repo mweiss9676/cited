@@ -3,12 +3,8 @@ import React, { memo, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { Paths } from "./App";
-import { Layout, Menu, Breadcrumb, Spin } from "antd";
-import {
-  UserOutlined,
-  HighlightOutlined,
-  FolderOpenOutlined
-} from "@ant-design/icons";
+import { Layout, Menu, Spin } from "antd";
+import { HighlightOutlined, FolderOpenOutlined } from "@ant-design/icons";
 import { isLoadingSelector } from "./slices/api";
 
 const { Header, Content, Footer, Sider } = Layout;
