@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
+using Domain.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -11,16 +13,13 @@ namespace Api.Controllers
     [Route("[controller]")]
     public class CitationController : ControllerBase
     {
-        private static readonly string[] Summaries = new[]
-        {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-        };
+        private readonly IMapper _mapper;
+        private readonly ICitationService _citationService;
 
-        private readonly ILogger<WeatherForecastController> _logger;
-
-        public CitationController(ILogger<WeatherForecastController> logger)
+        public CitationController(ICitationService citationService, IMapper mapper)
         {
-            _logger = logger;
+            _mapper = mapper;
+            _citationService = citationService;
         }
 
         [HttpGet]
