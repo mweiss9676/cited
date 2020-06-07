@@ -7,8 +7,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api", "Api\Api.csproj", "{B
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{BCED53A5-34F8-41C0-81B4-CDEAC4DD6B39}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{FF676773-9101-40FA-B2E4-E3133634D9FB}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DbScaffolder", "DbScaffolder\DbScaffolder.csproj", "{4464D36D-2201-4A6D-AA27-73095D4BE142}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Migrations", "Migrations\Migrations.csproj", "{3DB2FD39-2E4F-45DB-99BA-0717FD18BDF5}"
