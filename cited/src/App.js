@@ -9,6 +9,7 @@ import ApiError from "./ApiError";
 const Layout = lazy(() => import("./Layout"));
 const Dashboard = lazy(() => import("./components/dashboard/index"));
 const Create = lazy(() => import("./components/citation/create"));
+const Citations = lazy(() => import("./components/citation/index"));
 
 const baseUrl = document.getElementsByTagName("base")[0].getAttribute("href");
 
@@ -17,6 +18,7 @@ export const Paths = {
     Index: "/"
   },
   Citation: {
+    Index: "/citation",
     Create: "/citation/new"
   }
 };
@@ -36,6 +38,9 @@ const App = () => {
             >
               <Layout>
                 <Switch>
+                  <Route exact path={Paths.Citation.Index}>
+                    <Citations />
+                  </Route>
                   <Route path={Paths.Citation.Create}>
                     <Create />
                   </Route>

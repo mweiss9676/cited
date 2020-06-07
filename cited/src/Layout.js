@@ -15,6 +15,7 @@ const keys = {
     INDEX: "dashboard"
   },
   CITATIONS: {
+    INDEX: "create-index",
     CREATE: "create-citation"
   }
 };
@@ -40,6 +41,9 @@ const _Layout = ({ children }) => {
             <Link to={Paths.Dashboard.Index}>Cited</Link>
           </Menu.Item>
           <SubMenu key="sub1" icon={<HighlightOutlined />} title="Citations">
+            <Menu.Item key={keys.CITATIONS.INDEX}>
+              <Link to={Paths.Citation.Index}>My Citations</Link>
+            </Menu.Item>
             <Menu.Item key={keys.CITATIONS.CREATE}>
               <Link to={Paths.Citation.Create}>Create</Link>
             </Menu.Item>

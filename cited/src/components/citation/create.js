@@ -14,10 +14,11 @@ const Create = () => {
 
   useEffect(() => {
     async function fetchData() {
-      const result = await dispatch(fetchCitation());
+      await dispatch(fetchCitation());
     }
-    fetchData();
-  }, [dispatch]);
+
+    if (citation == null) fetchData();
+  }, [dispatch, citation]);
 
   const onFinish = values => {
     console.log(values);

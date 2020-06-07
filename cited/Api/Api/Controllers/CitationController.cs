@@ -23,23 +23,75 @@ namespace Api.Controllers
             _logger = logger;
         }
 
+        [HttpGet]
+        public IActionResult Get()
+        {
+            var citations = new List<CitationDto>()
+            {
+                new CitationDto() 
+                {
+                    Id = 1,
+                    Title = "Testing",
+                    Body = "This is the value. Here we have some data.",
+                    Url = "https://www.google.com"
+                },
+                new CitationDto()
+                {
+                    Id = 2,
+                    Title = "Testing 2",
+                    Body = "This is the value. Here we have some data.",
+                    Url = "https://www.google.com"
+                },
+                new CitationDto()
+                {
+                    Id = 3,
+                    Title = "Testing 3",
+                    Body = "This is the value. Here we have some data.",
+                    Url = "https://www.google.com"
+                },
+                new CitationDto()
+                {
+                    Id = 4,
+                    Title = "Testing 4",
+                    Body = "This is the value. Here we have some data.",
+                    Url = "https://www.google.com"
+                },
+                new CitationDto()
+                {
+                    Id = 5,
+                    Title = "Testing 5",
+                    Body = "This is the value. Here we have some data.",
+                    Url = "https://www.google.com"
+                },
+
+            };
+
+            return Ok(citations);
+        }
+
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            var thing = new Thing()
+            var citationDto = new CitationDto()
             {
                 Id = id,
-                Whatever = "Testing"
+                Title = "Testing",
+                Body = "This is the value. Here we have some data.",
+                Url = "https://www.google.com"
             };
 
-            return Ok(thing);
+            return Ok(citationDto);
         }
     }
 }
 
-class Thing
+class CitationDto
 {
     public int Id { get; set; }
 
-    public string Whatever { get; set; }
+    public string Title { get; set; }
+
+    public string Body { get; set; }
+
+    public string Url { get; set; }
 }
