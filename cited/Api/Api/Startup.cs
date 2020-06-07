@@ -36,6 +36,8 @@ namespace Api
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseCors("default");
+
             app.UseHttpsRedirection();
 
             app.UseRouting();

@@ -9,11 +9,12 @@ const { TextArea } = Input;
 const { Option } = Select;
 
 const Create = () => {
+  const dispatch = useDispatch();
   const citation = useSelector(citationSelector);
 
   useEffect(() => {
     async function fetchData() {
-      const result = await fetchCitation();
+      const result = await dispatch(fetchCitation());
       console.log("result", result);
     }
     fetchData();

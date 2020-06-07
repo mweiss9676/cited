@@ -1,5 +1,6 @@
+import { useDispatch } from "react-redux";
 import { createSlice, createSelector } from "redux-starter-kit";
-import { getTest } from "../api/citation";
+import { getCitation } from "../api/citation";
 
 const citationSlice = createSlice({
   slice: "citation",
@@ -10,17 +11,27 @@ const citationSlice = createSlice({
   reducers: {
     setError(state, action) {
       state.error = action.payload;
+    },
+    setCitation(state, action) {
+      state.citation = action.payload;
     }
   }
 });
 
 const { setError } = citationSlice.actions;
 
-export const fetchCitation = async (id = 0) => {
-  try {
-    const result = await getTest();
-    return result;
-  } catch (err) {}
+export const fetchCitation = (id = 0) => {
+  return async dispatch => {
+    try {
+      const result = await getCitation(id);
+      console.log("result");
+      console.log(result);
+
+      dispatch(citationSlice.actions.setCitation(result));
+    } catch (err) {
+      dispatch(citationSlice.actions.setError(err));
+    }
+  };
 };
 
 const stateSelector = state => state.citation;

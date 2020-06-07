@@ -1,10 +1,10 @@
 import store from "../store";
 import { setIsLoading, setError } from "../slices/api";
 
-export const apiGet = (url, ...rest) => {
+export const apiGet = (action, ...rest) => {
   store.dispatch(setIsLoading(true));
 
-  return fetch(`${url}/${rest}`, {
+  return fetch(`http://localhost:5000${action}/${rest}`, {
     method: "GET"
   })
     .then(response => response.json())
