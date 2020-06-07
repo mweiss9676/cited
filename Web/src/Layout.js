@@ -4,7 +4,11 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { Paths } from "./App";
 import { Layout, Menu, Breadcrumb, Spin } from "antd";
-import { UserOutlined, HighlightOutlined } from "@ant-design/icons";
+import {
+  UserOutlined,
+  HighlightOutlined,
+  FolderOpenOutlined
+} from "@ant-design/icons";
 import { isLoadingSelector } from "./slices/api";
 
 const { Header, Content, Footer, Sider } = Layout;
@@ -40,11 +44,11 @@ const _Layout = ({ children }) => {
           <Menu.Item key={keys.DASHBOARD.INDEX}>
             <Link to={Paths.Dashboard.Index}>Cited</Link>
           </Menu.Item>
-          <SubMenu key="sub1" icon={<HighlightOutlined />} title="Citations">
-            <Menu.Item key={keys.CITATIONS.INDEX}>
+          <SubMenu key="sub1" title="Citations">
+            <Menu.Item key={keys.CITATIONS.INDEX} icon={<FolderOpenOutlined />}>
               <Link to={Paths.Citation.Index}>My Citations</Link>
             </Menu.Item>
-            <Menu.Item key={keys.CITATIONS.CREATE}>
+            <Menu.Item key={keys.CITATIONS.CREATE} icon={<HighlightOutlined />}>
               <Link to={Paths.Citation.Create}>Create</Link>
             </Menu.Item>
           </SubMenu>
