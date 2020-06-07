@@ -1,7 +1,7 @@
 import { apiGet } from "./apiConfig";
 
 export const getCitation = (id = 0) => {
-  return apiGet("/citations", id);
+  return apiGet("/citation", id);
 };
 
 export const getTest = () => {

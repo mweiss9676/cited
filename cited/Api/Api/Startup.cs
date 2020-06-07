@@ -25,6 +25,22 @@ namespace Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var apiSection = new ApiSection();
+
+            Configuration.GetSection("Api").Bind(apiSection);
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy("default", policy =>
+                {
+                    policy
+                        .AllowAnyMethod()
+                        .AllowAnyHeader()
+                        .AllowCredentials()
+                        .WithOrigins(apiSection.AllowedCorsOrigins.ToArray());
+                });
+            });
+
             services.AddControllers();
         }
 
@@ -50,4 +66,15 @@ namespace Api
             });
         }
     }
+}
+
+class ApiSection
+{
+    public bool Demo { get; set; }
+
+    public string BaseUrl { get; set; }
+
+    public string ClientUri { get; set; }
+
+    public ICollection<string> AllowedCorsOrigins { get; set; }
 }

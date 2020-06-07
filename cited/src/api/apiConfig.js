@@ -4,11 +4,17 @@ import { setIsLoading, setError } from "../slices/api";
 export const apiGet = (action, ...rest) => {
   store.dispatch(setIsLoading(true));
 
-  return fetch(`http://localhost:5000${action}/${rest}`, {
+  return fetch(`https://localhost:5001${action}/${rest}`, {
     method: "GET"
   })
-    .then(response => response.json())
-    .then(json => json)
+    .then(response => {
+      console.log("response", response);
+      return response.json();
+    })
+    .then(json => {
+      console.log("json", json);
+      return json;
+    })
     .catch(err => {
       store.dispatch(
         setError({

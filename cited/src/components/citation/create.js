@@ -15,10 +15,9 @@ const Create = () => {
   useEffect(() => {
     async function fetchData() {
       const result = await dispatch(fetchCitation());
-      console.log("result", result);
     }
     fetchData();
-  }, []);
+  }, [dispatch]);
 
   const onFinish = values => {
     console.log(values);

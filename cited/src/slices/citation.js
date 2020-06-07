@@ -24,8 +24,6 @@ export const fetchCitation = (id = 0) => {
   return async dispatch => {
     try {
       const result = await getCitation(id);
-      console.log("result");
-      console.log(result);
 
       dispatch(citationSlice.actions.setCitation(result));
     } catch (err) {

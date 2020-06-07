@@ -24,16 +24,22 @@ namespace Api.Controllers
         }
 
         [HttpGet("{id}")]
-        public IEnumerable<WeatherForecast> Get(int id)
+        public IActionResult Get(int id)
         {
-            var rng = new Random();
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
+            var thing = new Thing()
             {
-                Date = DateTime.Now.AddDays(index),
-                TemperatureC = rng.Next(-20, 55),
-                Summary = Summaries[rng.Next(Summaries.Length)]
-            })
-            .ToArray();
+                Id = id,
+                Whatever = "Testing"
+            };
+
+            return Ok(thing);
         }
     }
+}
+
+class Thing
+{
+    public int Id { get; set; }
+
+    public string Whatever { get; set; }
 }
