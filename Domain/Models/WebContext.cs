@@ -8,12 +8,21 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using AutoMapper.Configuration;
+using Microsoft.Extensions.Options;
 
 namespace Domain.Models
 {
-    public partial class CitedContext 
+    public partial class CitedContext
     {
-        IHttpContextAccessor _httpContextAccessor;
+        private readonly IConfiguration _configuration;
+        private readonly IHttpContextAccessor _httpContextAccessor;
+
+        public CitedContext(DbContextOptions<CitedContext> options, IConfiguration configuration, IHttpContextAccessor httpContextAccessor) : base(options)
+        {
+            _configuration = configuration;
+            _httpContextAccessor = httpContextAccessor;
+        }
 
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder)
         {

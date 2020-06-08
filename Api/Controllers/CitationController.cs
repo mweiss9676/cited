@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using AutoMapper;
+using Domain.Dtos;
 using Domain.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 
 namespace Api.Controllers
 {
@@ -82,15 +79,4 @@ namespace Api.Controllers
             return Ok(citationDto);
         }
     }
-}
-
-class CitationDto
-{
-    public int Id { get; set; }
-
-    public string Title { get; set; }
-
-    public string Body { get; set; }
-
-    public string Url { get; set; }
 }

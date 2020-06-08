@@ -30,7 +30,12 @@ const _Layout = ({ children }) => {
 
   return (
     <Layout style={{ minHeight: "100vh" }}>
-      <Sider collapsible collapsed={collapsed} onCollapse={handleCollapse}>
+      <Sider
+        collapsible
+        collapsed={collapsed}
+        onCollapse={handleCollapse}
+        className="site-sider"
+      >
         <div className="logo" />
         <Menu
           theme="dark"
@@ -53,7 +58,7 @@ const _Layout = ({ children }) => {
       <Layout className="site-layout">
         <Header className="site-layout-background" style={{ padding: 0 }} />
         <Spin spinning={isLoading}>
-          <Content style={{ margin: "0 16px" }}>
+          <Content className="site-content" style={{ margin: "0 16px" }}>
             <div
               className="site-layout-background"
               style={{ padding: 24, minHeight: 360 }}
@@ -62,7 +67,7 @@ const _Layout = ({ children }) => {
             </div>
           </Content>
         </Spin>
-        <Footer style={{ textAlign: "center" }}>
+        <Footer className="site-footer" style={{ textAlign: "center" }}>
           Ant Design ©2018 Created by Ant UED
         </Footer>
       </Layout>
