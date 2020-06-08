@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Domain.Services
 {
-    public class CitationService : AppService<Citation>, ICitationService
+    public partial class CitationService : AppService<Citation>, ICitationService
     {
         public CitationService(CitedContext ctx) : base(ctx)
         {
@@ -14,7 +14,7 @@ namespace Domain.Services
         }
     }
 
-    public class CategoryService : AppService<Category>, ICategoryService
+    public partial class CategoryService : AppService<Category>, ICategoryService
     {
         public CategoryService(CitedContext ctx) : base(ctx)
         {

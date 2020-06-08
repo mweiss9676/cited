@@ -1,14 +1,13 @@
-import { useDispatch } from "react-redux";
 import { createSlice, createSelector } from "redux-starter-kit";
 import { getCitation, getCitations } from "../api/citation";
 
 const citationSlice = createSlice({
   slice: "citation",
   initialState: {
-    isLoaded: false,
     error: null,
     citation: null,
-    citations: null
+    citations: null,
+    categories: null
   },
   reducers: {
     setIsLoaded(state, action) {
@@ -22,6 +21,9 @@ const citationSlice = createSlice({
     },
     setCitations(state, action) {
       state.citations = action.payload;
+    },
+    setCategories(state, action) {
+      state.categories = action.payload;
     }
   }
 });
@@ -56,11 +58,65 @@ export const fetchCitations = () => {
   };
 };
 
-const stateSelector = state => state.citation;
+export const fetchCategories = () => {
+  return async dispatch => {
+    try {
+      //const result = await getCategories();
+      const result = [
+        {
+          id: 1,
+          name: "test 1",
+          parentCategoryId: null,
+          citations: [
+            {
+              id: 1,
+              title: "test citation 1",
+              body: "test body 1",
+              url: "https://www.google.com",
+              categoryId: 1
+            },
+            {
+              id: 2,
+              title: "test citation 2",
+              body: "test body 2",
+              url: "https://www.google.com",
+              categoryId: 1
+            }
+          ]
+        },
+        {
+          id: 2,
+          name: "test 2",
+          parentCategoryId: null,
+          citations: [
+            {
+              id: 3,
+              title: "test citation 3",
+              body: "test body 3",
+              url: "https://www.google.com",
+              categoryId: 2
+            },
+            {
+              id: 4,
+              title: "test citation 4",
+              body: "test body 4",
+              url: "https://www.google.com",
+              categoryId: 2
+            }
+          ]
+        },
+        { id: 3, name: "test 3", parentCategoryId: null, citations: [] },
+        { id: 4, name: "test 1", parentCategoryId: null, citations: [] }
+      ];
 
-export const isLoadedSelector = createSelector([stateSelector], state =>
-  state !== null ? state.isLoaded : false
-);
+      dispatch(citationSlice.actions.setCategories(result));
+    } catch (err) {
+      dispatch(citationSlice.actions.setError(err));
+    }
+  };
+};
+
+const stateSelector = state => state.citation;
 
 export const citationSelector = createSelector([stateSelector], state =>
   state !== null ? state.citation || null : {}
@@ -68,6 +124,10 @@ export const citationSelector = createSelector([stateSelector], state =>
 
 export const citationsSelector = createSelector([stateSelector], state =>
   state !== null ? state.citations || null : []
+);
+
+export const categoriesSelector = createSelector([stateSelector], state =>
+  state !== null ? state.categories || null : []
 );
 
 export { citationSlice };

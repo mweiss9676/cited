@@ -13,5 +13,7 @@ namespace Domain.Dtos
         public string AspNetUserId { get; set; }
 
         public int? ParentCategoryId { get; set; }
+
+        public List<CitationDto> Citations { get; set; } = new List<CitationDto>();
     }
 }
