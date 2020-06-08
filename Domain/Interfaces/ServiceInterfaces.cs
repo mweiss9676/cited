@@ -1,9 +1,7 @@
 ﻿using Domain.Models;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Domain.Interfaces
 {
     public partial interface ICitationService : IAppService<Citation> { }
+    public partial interface ICategoryService : IAppService<Category> { }
 }

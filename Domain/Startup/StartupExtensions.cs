@@ -22,6 +22,7 @@ namespace Domain.Startup
             services.Configure<ApiSection>(configuration.GetSection("Api"));
 
             services.AddScoped<ICitationService, CitationService>();
+            services.AddScoped<ICategoryService, CategoryService>();
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 

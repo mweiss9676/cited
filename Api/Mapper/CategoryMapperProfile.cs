@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace Api.Mapper
 {
-    public class CategoryMapperProfile : Profile
+    public class CitationMapperProfile : Profile
     {
-        public CategoryMapperProfile()
+        public CitationMapperProfile()
         {
-            CreateMap<CategoryDto, Category>().ReverseMap();
+            CreateMap<CitationDto, Citation>().ReverseMap();
         }
     }
 }
