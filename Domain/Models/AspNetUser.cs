@@ -14,6 +14,7 @@ namespace Domain.Models
             AspNetUserLogins = new HashSet<AspNetUserLogin>();
             AspNetUserRoles = new HashSet<AspNetUserRole>();
             AspNetUserTokens = new HashSet<AspNetUserToken>();
+            Categories = new HashSet<Category>();
             Citations = new HashSet<Citation>();
         }
 
@@ -50,6 +51,8 @@ namespace Domain.Models
         public virtual ICollection<AspNetUserRole> AspNetUserRoles { get; set; }
         [InverseProperty(nameof(AspNetUserToken.User))]
         public virtual ICollection<AspNetUserToken> AspNetUserTokens { get; set; }
+        [InverseProperty(nameof(Category.AspNetUser))]
+        public virtual ICollection<Category> Categories { get; set; }
         [InverseProperty(nameof(Citation.AspNetUser))]
         public virtual ICollection<Citation> Citations { get; set; }
     }

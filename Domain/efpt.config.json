@@ -42,6 +42,10 @@
       },
       {
          "HasPrimaryKey": true,
+         "Name": "[dbo].[Categories]"
+      },
+      {
+         "HasPrimaryKey": true,
          "Name": "[dbo].[Citations]"
       }
    ],

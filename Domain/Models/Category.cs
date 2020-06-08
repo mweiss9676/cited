@@ -6,15 +6,20 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Domain.Models
 {
-    public partial class Citation
+    public partial class Category
     {
+        public Category()
+        {
+            Citations = new HashSet<Citation>();
+            InverseParentCategory = new HashSet<Category>();
+        }
+
         [Key]
         public int Id { get; set; }
         [Required]
-        public string Body { get; set; }
         [StringLength(255)]
-        public string Url { get; set; }
-        public bool IsPublic { get; set; }
+        public string Name { get; set; }
+        public int? ParentCategoryId { get; set; }
         [Required]
         [StringLength(450)]
         public string AspNetUserId { get; set; }
@@ -25,13 +30,16 @@ namespace Domain.Models
         [StringLength(255)]
         public string UpdatedBy { get; set; }
         public bool IsDeleted { get; set; }
-        public int CategoryId { get; set; }
 
         [ForeignKey(nameof(AspNetUserId))]
-        [InverseProperty("Citations")]
+        [InverseProperty("Categories")]
         public virtual AspNetUser AspNetUser { get; set; }
-        [ForeignKey(nameof(CategoryId))]
-        [InverseProperty("Citations")]
-        public virtual Category Category { get; set; }
+        [ForeignKey(nameof(ParentCategoryId))]
+        [InverseProperty(nameof(Category.InverseParentCategory))]
+        public virtual Category ParentCategory { get; set; }
+        [InverseProperty(nameof(Citation.Category))]
+        public virtual ICollection<Citation> Citations { get; set; }
+        [InverseProperty(nameof(Category.ParentCategory))]
+        public virtual ICollection<Category> InverseParentCategory { get; set; }
     }
 }

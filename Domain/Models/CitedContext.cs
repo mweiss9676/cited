@@ -23,6 +23,7 @@ namespace Domain.Models
         public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
         public virtual DbSet<AspNetUserRole> AspNetUserRoles { get; set; }
         public virtual DbSet<AspNetUserToken> AspNetUserTokens { get; set; }
+        public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Citation> Citations { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -52,6 +53,28 @@ namespace Domain.Models
                 entity.HasKey(e => new { e.UserId, e.LoginProvider, e.Name });
             });
 
+            modelBuilder.Entity<Category>(entity =>
+            {
+                entity.Property(e => e.CreatedBy).HasDefaultValueSql("(N'System')");
+
+                entity.Property(e => e.CreatedDate).HasDefaultValueSql("(getutcdate())");
+
+                entity.Property(e => e.UpdatedBy).HasDefaultValueSql("(N'System')");
+
+                entity.Property(e => e.UpdatedDate).HasDefaultValueSql("(getutcdate())");
+
+                entity.HasOne(d => d.AspNetUser)
+                    .WithMany(p => p.Categories)
+                    .HasForeignKey(d => d.AspNetUserId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Categories_AspNetUserId_AspNetUsers_Id");
+
+                entity.HasOne(d => d.ParentCategory)
+                    .WithMany(p => p.InverseParentCategory)
+                    .HasForeignKey(d => d.ParentCategoryId)
+                    .HasConstraintName("FK_Categories_ParentCategoryId_Categories_Id");
+            });
+
             modelBuilder.Entity<Citation>(entity =>
             {
                 entity.Property(e => e.CreatedBy).HasDefaultValueSql("(N'System')");
@@ -67,6 +90,12 @@ namespace Domain.Models
                     .HasForeignKey(d => d.AspNetUserId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Citations_AspNetUserId_AspNetUsers_Id");
+
+                entity.HasOne(d => d.Category)
+                    .WithMany(p => p.Citations)
+                    .HasForeignKey(d => d.CategoryId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Citations_CategoryId_Categories_Id");
             });
 
             OnModelCreatingPartial(modelBuilder);
