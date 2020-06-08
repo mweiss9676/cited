@@ -5,8 +5,5 @@ using System.Text;
 
 namespace Domain.Interfaces
 {
-    public class ServiceInterfaces
-    {
-        public partial interface ICitationService : IAppService<Citation> { }
-    }
+    public partial interface ICitationService : IAppService<Citation> { }
 }

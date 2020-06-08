@@ -49,9 +49,11 @@ namespace Api
                 });
             });
 
-            services.ConfigureDependencies(HostingEnvironment, Configuration);
-
             services.AddControllers();
+
+
+            services.ConfigureDependencies(Configuration);
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
